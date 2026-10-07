@@ -3,21 +3,691 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photizo Truth</title>
+
+    <title>Photizo Truth | ...making manifest.</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #171717;
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+
+        header {
+            width: 100%;
+            padding: 24px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eeeeee;
+            background: #ffffff;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            font-weight: 400;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #171717;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.55;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 650px;
+            padding: 100px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            background: #f5f3ed;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .eyebrow {
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 8vw, 100px);
+            line-height: 0.95;
+            margin-bottom: 30px;
+            letter-spacing: -4px;
+        }
+
+        .tagline {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            max-width: 540px;
+            font-size: 18px;
+            color: #555555;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid #171717;
+            color: #171717;
+        }
+
+        .button.primary {
+            background: #171717;
+            color: #ffffff;
+        }
+
+        .button:hover {
+            opacity: 0.75;
+        }
+
+        /* HERO VISUAL */
+
+        .hero-visual {
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: #dedbd0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .hero-visual-inner {
+            width: 270px;
+            height: 270px;
+            border: 1px solid #777777;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .hero-visual-inner p {
+            font-size: 18px;
+            font-style: italic;
+        }
+
+        /* INTRO */
+
+        .intro {
+            padding: 110px 7%;
+            text-align: center;
+        }
+
+        .intro h2 {
+            font-size: 48px;
+            margin-bottom: 25px;
+        }
+
+        .intro p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 19px;
+            color: #555555;
+        }
+
+        /* THREE AREAS */
+
+        .areas {
+            padding: 30px 7% 110px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .area {
+            padding: 45px 35px;
+            background: #f5f3ed;
+            min-height: 260px;
+        }
+
+        .area-number {
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+
+        .area h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .area p {
+            color: #5b5b5b;
+        }
+
+        /* SCRIPTURE */
+
+        .scripture {
+            padding: 120px 7%;
+            background: #171717;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .scripture-label {
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .scripture blockquote {
+            max-width: 900px;
+            margin: auto;
+            font-size: clamp(30px, 5vw, 55px);
+            line-height: 1.2;
+        }
+
+        .scripture cite {
+            display: block;
+            margin-top: 35px;
+            font-size: 16px;
+            font-style: normal;
+            color: #bbbbbb;
+        }
+
+        /* CONTENT */
+
+        .content {
+            padding: 110px 7%;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 45px;
+            gap: 20px;
+        }
+
+        .section-heading h2 {
+            font-size: 45px;
+        }
+
+        .section-heading a {
+            color: #171717;
+            font-weight: 600;
+        }
+
+        .articles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .article {
+            border: 1px solid #dddddd;
+            padding: 35px;
+            min-height: 300px;
+        }
+
+        .article small {
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .article h3 {
+            font-size: 26px;
+            margin: 45px 0 15px;
+        }
+
+        .article p {
+            color: #666666;
+        }
+
+        /* PRAYER */
+
+        .prayer {
+            padding: 100px 7%;
+            background: #f5f3ed;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .prayer h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .prayer p {
+            max-width: 600px;
+            color: #555555;
+            font-size: 18px;
+        }
+
+        /* DONATE */
+
+        .donate {
+            padding: 110px 7%;
+            text-align: center;
+        }
+
+        .donate h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .donate p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: #555555;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 60px 7%;
+            background: #171717;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 70px;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero-visual-inner {
+                width: 200px;
+                height: 200px;
+            }
+
+            .areas,
+            .articles {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading {
+                flex-direction: column;
+                align-items: start;
+            }
+
+            .prayer {
+                flex-direction: column;
+                align-items: start;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+
+            footer a {
+                margin-left: 0;
+                margin-right: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>Photizo Truth</h1>
+<header>
 
-    <p>...making manifest.</p>
+    <div class="logo">
+        PHOTIZO <span>TRUTH</span>
+    </div>
 
-    <h2>Welcome</h2>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#articles">Articles</a>
+        <a href="#prayer">Prayer</a>
+        <a href="#donate">Donate</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <div class="eyebrow">Photizo Truth</div>
+
+        <h1>Truth<br>Made<br>Manifest.</h1>
+
+        <div class="tagline">
+            ...making manifest.
+        </div>
+
+        <p class="hero-description">
+            Exploring Scripture, examining its meaning,
+            and bringing the light of God's Word into clearer view.
+        </p>
+
+        <div class="buttons">
+            <a href="#articles" class="button primary">
+                Explore Articles
+            </a>
+
+            <a href="#prayer" class="button">
+                Prayer
+            </a>
+        </div>
+
+    </div>
+
+
+    <div class="hero-visual">
+
+        <div class="hero-visual-inner">
+
+            <p>
+                "The entrance of thy words
+                giveth light..."
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INTRO -->
+
+<section class="intro">
+
+    <h2>Explore the Word</h2>
 
     <p>
-        Welcome to Photizo Truth — a place for exploring,
-        understanding and communicating the truth of God's Word.
+        Photizo Truth exists to examine the Scriptures,
+        uncover biblical meaning, and communicate God's Word
+        clearly through teaching, writing and visual media.
     </p>
+
+</section>
+
+
+<!-- THREE AREAS -->
+
+<section class="areas">
+
+    <div class="area">
+
+        <div class="area-number">01</div>
+
+        <h3>Understand</h3>
+
+        <p>
+            Examine Scripture carefully and seek to understand
+            what the biblical text actually says.
+        </p>
+
+    </div>
+
+
+    <div class="area">
+
+        <div class="area-number">02</div>
+
+        <h3>Reveal</h3>
+
+        <p>
+            Bring connections, meanings and biblical truths
+            into clearer view.
+        </p>
+
+    </div>
+
+
+    <div class="area">
+
+        <div class="area-number">03</div>
+
+        <h3>Apply</h3>
+
+        <p>
+            Move beyond information and allow the truth of
+            God's Word to shape the way we live.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- SCRIPTURE -->
+
+<section class="scripture">
+
+    <div class="scripture-label">
+        Scripture
+    </div>
+
+    <blockquote>
+        "But all things that are reproved
+        are made manifest by the light..."
+    </blockquote>
+
+    <cite>
+        Ephesians 5:13
+    </cite>
+
+</section>
+
+
+<!-- ARTICLES -->
+
+<section class="content" id="articles">
+
+    <div class="section-heading">
+
+        <h2>Latest Articles</h2>
+
+        <a href="#articles">View all →</a>
+
+    </div>
+
+
+    <div class="articles">
+
+        <article class="article">
+
+            <small>Bible Study</small>
+
+            <h3>
+                Understanding Faith
+            </h3>
+
+            <p>
+                Exploring what Scripture means when it speaks
+                about faith and believing.
+            </p>
+
+        </article>
+
+
+        <article class="article">
+
+            <small>Scripture</small>
+
+            <h3>
+                Made Manifest
+            </h3>
+
+            <p>
+                Examining the biblical meaning behind the
+                language of manifestation and light.
+            </p>
+
+        </article>
+
+
+        <article class="article">
+
+            <small>Bible Study</small>
+
+            <h3>
+                Christ in You
+            </h3>
+
+            <p>
+                Exploring the mystery of Christ in you,
+                the hope of glory.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- PRAYER -->
+
+<section class="prayer" id="prayer">
+
+    <div>
+
+        <h2>Prayer</h2>
+
+        <p>
+            Bring your prayers before God and seek Him
+            according to His Word.
+        </p>
+
+    </div>
+
+    <a href="#" class="button primary">
+        Prayer Resources →
+    </a>
+
+</section>
+
+
+<!-- DONATE -->
+
+<section class="donate" id="donate">
+
+    <h2>Support the Work</h2>
+
+    <p>
+        Help Photizo Truth continue creating biblical
+        teaching and resources that make God's Word clearer
+        and more accessible.
+    </p>
+
+    <a href="#" class="button primary">
+        Donate →
+    </a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+    <div>
+        <strong>PHOTIZO TRUTH</strong>
+        <p>...making manifest.</p>
+    </div>
+
+    <div>
+
+        <a href="#home">Home</a>
+        <a href="#articles">Articles</a>
+        <a href="#prayer">Prayer</a>
+        <a href="#donate">Donate</a>
+        <a href="#contact">Contact</a>
+
+    </div>
+
+</footer>
 
 </body>
 </html>
